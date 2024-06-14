@@ -12,13 +12,13 @@ type MyTheme struct{}
 func (MyTheme) Color(n fyne.ThemeColorName, v fyne.ThemeVariant) color.Color {
 	switch n {
 	case theme.ColorNamePrimary:
-		return color.NRGBA{R: 0xe6, G: 0x77, B: 0x2e, A: 0xff}
+		return color.NRGBA{R: 0x2e, G: 0x77, B: 0xe6, A: 0xff}
 	case theme.ColorNameHyperlink:
-		return color.NRGBA{R: 0xe6, G: 0x77, B: 0x2e, A: 0xff}
+		return color.NRGBA{R: 0x2e, G: 0x77, B: 0xe6, A: 0xff}
 	case theme.ColorNameFocus:
-		return color.NRGBA{R: 0xf5, G: 0x65, B: 0x08, A: 0x2a}
+		return color.NRGBA{R: 0x08, G: 0x65, B: 0xf5, A: 0x2a}
 	case theme.ColorNameSelection:
-		return color.NRGBA{R: 0xf5, G: 0x65, B: 0x08, A: 0x2a}
+		return color.NRGBA{R: 0x08, G: 0x65, B: 0xf5, A: 0x2a}
 	default:
 		return theme.DefaultTheme().Color(n, v)
 	}
@@ -30,9 +30,6 @@ func (MyTheme) Font(s fyne.TextStyle) fyne.Resource {
 	}
 	if s.Monospace {
 		return resourceDroidSansMono
-	}
-	if s.Bold {
-		return resourceDroidSansBold
 	}
 	return resourceDroidSansFallback
 }

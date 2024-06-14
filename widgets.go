@@ -70,7 +70,7 @@ func (entry *ReadOnlyEntry) TypedShortcut(shortcut fyne.Shortcut) {
 
 func (entry *ReadOnlyEntry) TappedSecondary(ev *fyne.PointEvent) {
 	c := fyne.CurrentApp().Driver().AllWindows()[0].Clipboard()
-	copyItem := fyne.NewMenuItem("Copy", func() {
+	copyItem := fyne.NewMenuItem("复制", func() {
 		c.SetContent(entry.SelectedText())
 	})
 	menu := fyne.NewMenu("", copyItem)
@@ -91,54 +91,54 @@ func InitWidgets() {
 	StatusProcessBar.Stop()
 	StatusProcessBar.Hide()
 
-	StatusLabel = widget.NewLabel("Ready.")
+	StatusLabel = widget.NewLabel("就绪.")
 
-	DownloadButton = &widget.Button{Text: "Download",
+	DownloadButton = &widget.Button{Text: "下载",
 		OnTapped: func() { go downloadButtonFunc() },
 		Icon:     theme.DownloadIcon()}
 
-	SetNicknameButton = &widget.Button{Text: "Nickname",
+	SetNicknameButton = &widget.Button{Text: "编辑别称",
 		OnTapped: func() { go setNicknameButtonFunc() },
 		Icon:     theme.DocumentCreateIcon()}
 
-	DeleteProfileButton = &widget.Button{Text: "Delete",
+	DeleteProfileButton = &widget.Button{Text: "删除",
 		OnTapped: func() { go deleteProfileButtonFunc() },
 		Icon:     theme.DeleteIcon()}
 
-	SwitchStateButton = &widget.Button{Text: "Enable",
+	SwitchStateButton = &widget.Button{Text: "启用",
 		OnTapped: func() { go switchStateButtonFunc() },
 		Icon:     theme.ConfirmIcon()}
 
 	ProfileList = initProfileList()
 	NotificationList = initNotificationList()
 
-	ProcessNotificationButton = &widget.Button{Text: "Process",
+	ProcessNotificationButton = &widget.Button{Text: "处理",
 		OnTapped: func() { go processNotificationButtonFunc() },
 		Icon:     theme.MediaPlayIcon()}
 
-	ProcessAllNotificationButton = &widget.Button{Text: "Process All",
+	ProcessAllNotificationButton = &widget.Button{Text: "处理全部",
 		OnTapped: func() { go processAllNotificationButtonFunc() },
 		Icon:     theme.MediaReplayIcon()}
 
-	RemoveNotificationButton = &widget.Button{Text: "Remove",
+	RemoveNotificationButton = &widget.Button{Text: "移除",
 		OnTapped: func() { go removeNotificationButtonFunc() },
 		Icon:     theme.ContentRemoveIcon()}
 
-	BatchRemoveNotificationButton = &widget.Button{Text: "Batch Remove",
+	BatchRemoveNotificationButton = &widget.Button{Text: "批量移除",
 		OnTapped: func() { go batchRemoveNotificationButtonFunc() },
 		Icon:     theme.DeleteIcon()}
 
 	FreeSpaceLabel = widget.NewLabel("")
 
-	OpenLogButton = &widget.Button{Text: "Open Log",
+	OpenLogButton = &widget.Button{Text: "查看日志",
 		OnTapped: func() { go OpenLog() },
 		Icon:     theme.FolderOpenIcon()}
 
-	RefreshButton = &widget.Button{Text: "Refresh",
+	RefreshButton = &widget.Button{Text: "刷新",
 		OnTapped: func() { go Refresh() },
 		Icon:     theme.ViewRefreshIcon()}
 
-	ProfileMaskCheck = widget.NewCheck("Mask", func(b bool) {
+	ProfileMaskCheck = widget.NewCheck("掩码", func(b bool) {
 		if b {
 			ProfileMaskNeeded = true
 			ProfileList.Refresh()
@@ -147,7 +147,7 @@ func InitWidgets() {
 			ProfileList.Refresh()
 		}
 	})
-	NotificationMaskCheck = widget.NewCheck("Mask", func(b bool) {
+	NotificationMaskCheck = widget.NewCheck("掩码", func(b bool) {
 		if b {
 			NotificationMaskNeeded = true
 			NotificationList.Refresh()
@@ -162,20 +162,20 @@ func InitWidgets() {
 	RootDsAddressLabel = widget.NewLabel("")
 	EuiccInfo2Entry = NewReadOnlyEntry()
 	EuiccInfo2Entry.Hide()
-	CopyEidButton = &widget.Button{Text: "Copy",
+	CopyEidButton = &widget.Button{Text: "复制",
 		OnTapped: func() { go copyEidButtonFunc() },
 		Icon:     theme.ContentCopyIcon()}
 	CopyEidButton.Hide()
 	SetDefaultSmdpButton = &widget.Button{OnTapped: func() { go setDefaultSmdpButtonFunc() },
 		Icon: theme.DocumentCreateIcon()}
 	SetDefaultSmdpButton.Hide()
-	ViewCertInfoButton = &widget.Button{Text: "Certificate Issuer",
+	ViewCertInfoButton = &widget.Button{Text: "证书颁发机构",
 		OnTapped: func() { go viewCertInfoButtonFunc() },
 		Icon:     theme.InfoIcon()}
 	ViewCertInfoButton.Hide()
 	EUICCManufacturerLabel = &widget.Label{}
 	EUICCManufacturerLabel.Hide()
-	CopyEuiccInfo2Button = &widget.Button{Text: "Copy eUICCInfo2",
+	CopyEuiccInfo2Button = &widget.Button{Text: "复制 eUICCInfo2",
 		OnTapped: func() { go copyEuiccInfo2ButtonFunc() },
 		Icon:     theme.ContentCopyIcon()}
 	CopyEuiccInfo2Button.Hide()
@@ -227,7 +227,7 @@ func deleteProfileButtonFunc() {
 		return
 	}
 	if Profiles[SelectedProfile].ProfileState == "enabled" {
-		d := dialog.NewInformation("Hint", "You should disable the profile before deleting it.", WMain)
+		d := dialog.NewInformation("提示", "在删除之前，你应该禁用该配置文件.", WMain)
 		d.Resize(fyne.Size{
 			Width:  360,
 			Height: 170,
@@ -237,15 +237,15 @@ func deleteProfileButtonFunc() {
 	}
 	profileText := fmt.Sprint(
 		"ICCID: ", Profiles[SelectedProfile].Iccid, "\n",
-		"Provider: ", Profiles[SelectedProfile].ServiceProviderName, "\n",
+		"运营商: ", Profiles[SelectedProfile].ServiceProviderName, "\n",
 	)
 	if Profiles[SelectedProfile].ProfileNickname != nil {
-		profileText += fmt.Sprint("Nickname: ", *Profiles[SelectedProfile].ProfileNickname, "\n")
+		profileText += fmt.Sprint("别称: ", *Profiles[SelectedProfile].ProfileNickname, "\n")
 	}
-	dialog.ShowCustomConfirm("Confirm",
-		"Confirm",
-		"Cancel",
-		container.NewVBox(container.NewCenter(widget.NewLabel("Are you sure you want to delete this profile?")),
+	dialog.ShowCustomConfirm("确认",
+		"确认",
+		"取消",
+		container.NewVBox(container.NewCenter(widget.NewLabel("您确定要删除此配置文件吗?")),
 			&widget.Label{Text: profileText}),
 		func(b bool) {
 			if b {
@@ -258,26 +258,26 @@ func deleteProfileButtonFunc() {
 						Refresh()
 						deleteNotification := findNewNotification(notificationOrigin, Notifications)
 						if deleteNotification == nil {
-							dialog.ShowError(errors.New("notification not found"), WMain)
+							dialog.ShowError(errors.New("通知未找到"), WMain)
 							return
 						}
 						if ConfigInstance.AutoMode {
 							// 默认保留 delete 通知
 							if err2 := LpacNotificationProcess(deleteNotification.SeqNumber, false); err2 != nil {
-								dialog.ShowError(errors.New("Successfully deleted profile but failed to send notification\nYou should try to send delete notification manually"), WMain)
+								dialog.ShowError(errors.New("已成功删除配置文件，但发送通知失败\n您应尝试手动发送删除通知"), WMain)
 							} else {
 								// Ask to remove delete notification
 								// fixme 和手动操作通知模式重构
 								var d *dialog.CustomDialog
 								notNowButton := &widget.Button{
-									Text: "Not Now",
+									Text: "现在不操作",
 									Icon: theme.CancelIcon(),
 									OnTapped: func() {
 										d.Hide()
 									},
 								}
 								removeButton := &widget.Button{
-									Text: "Remove",
+									Text: "移除",
 									Icon: theme.DeleteIcon(),
 									OnTapped: func() {
 										go func() {
@@ -296,24 +296,24 @@ func deleteProfileButtonFunc() {
 										}()
 									},
 								}
-								d = dialog.NewCustomWithoutButtons("Remove Notification",
+								d = dialog.NewCustomWithoutButtons("移除通知",
 									container.NewBorder(
 										nil,
 										container.NewCenter(container.NewHBox(notNowButton, spacer, removeButton)),
 										nil,
 										nil,
 										container.NewVBox(
-											&widget.Label{Text: "Successfully deleted profile and sent notification\nDo you want to remove delete notification now?",
+											&widget.Label{Text: "已成功删除配置文件并发送通知\n您现在要移除删除通知吗?",
 												Alignment: fyne.TextAlignCenter},
-											&widget.Label{Text: fmt.Sprintf("Seq: %d\nICCID: %s\nOperation: %s\nAddress: %s\n",
+											&widget.Label{Text: fmt.Sprintf("序号: %d\nICCID: %s\n操作: %s\n服务器: %s\n",
 												deleteNotification.SeqNumber, deleteNotification.Iccid,
 												deleteNotification.ProfileManagementOperation, deleteNotification.NotificationAddress)})),
 									WMain)
 								d.Show()
 							}
 						} else {
-							dialog.ShowConfirm("Delete Successful",
-								"The profile has been successfully deleted\nSend the delete notification now?\n",
+							dialog.ShowConfirm("删除成功",
+								"配置文件已成功删除\n现在发送删除通知吗?\n",
 								func(b bool) {
 									if b {
 										go processNotificationManually(deleteNotification.SeqNumber)
@@ -358,19 +358,19 @@ func switchStateButtonFunc() {
 		// 有一个 Profile 已启用，启用另外一个，产生一个 disable 和一个 enable 通知
 		// 禁用 Profile，产生一个 disable 通知
 		if switchNotifications == nil || len(switchNotifications) > 2 {
-			dialog.ShowError(errors.New("failed to found notification"), WMain)
+			dialog.ShowError(errors.New("未能找到通知"), WMain)
 		} else {
-			dialogText := "successfully enabled profile\n"
+			dialogText := "已成功启用配置文件\n"
 			var hasError bool
 			for _, notification := range switchNotifications {
 				if err2 := LpacNotificationProcess(notification.SeqNumber, true); err2 != nil {
 					hasError = true
 					switch notification.ProfileManagementOperation {
 					case "enable":
-						dialogText += "failed to process enable notification\n"
+						dialogText += "启用通知处理失败\n"
 						break
 					case "disable":
-						dialogText += "failed to process disable notification\n"
+						dialogText += "禁用通知处理失败\n"
 						break
 					}
 				}
@@ -382,7 +382,7 @@ func switchStateButtonFunc() {
 	}
 	Refresh()
 	if ProfileStateAllowDisable {
-		SwitchStateButton.SetText("Enable")
+		SwitchStateButton.SetText("启用")
 		SwitchStateButton.SetIcon(theme.ConfirmIcon())
 	}
 }
@@ -420,38 +420,38 @@ func processAllNotificationButtonFunc() {
 		"delete":  false,
 	}
 	enableCheck := &widget.Check{
-		Text:    "Enable",
+		Text:    "enable",
 		Checked: true,
 		OnChanged: func(b bool) {
 			config["enable"] = b
 		},
 	}
 	disableCheck := &widget.Check{
-		Text:    "Disable",
+		Text:    "disable",
 		Checked: true,
 		OnChanged: func(b bool) {
 			config["disable"] = b
 		},
 	}
 	installCheck := &widget.Check{
-		Text:    "Install",
+		Text:    "install",
 		Checked: true,
 		OnChanged: func(b bool) {
 			config["install"] = b
 		},
 	}
 	deleteCheck := &widget.Check{
-		Text:    "Delete",
+		Text:    "delete",
 		Checked: false,
 		OnChanged: func(b bool) {
 			config["delete"] = b
 		},
 	}
-	dialog.ShowCustomConfirm("Process All Notifications",
-		"OK",
-		"Cancel",
+	dialog.ShowCustomConfirm("处理所有通知",
+		"确定",
+		"取消",
 		container.NewVBox(
-			&widget.Label{Text: "Remove the following notification type after processing:"},
+			&widget.Label{Text: "在处理后移除以下通知类型:"},
 			enableCheck,
 			disableCheck,
 			installCheck,
@@ -484,9 +484,9 @@ func processAllNotificationButtonFunc() {
 				if err := RefreshNotification(); err != nil {
 					ShowLpacErrDialog(err)
 				}
-				dialog.ShowCustom("Operation Finished",
-					"OK",
-					&widget.Label{Text: fmt.Sprintf("%d processed\n%d succeed\n%d failed", total, total-count, count)},
+				dialog.ShowCustom("操作完成",
+					"确定",
+					&widget.Label{Text: fmt.Sprintf("%d 个已处理\n%d 个成功\n%d 个失败", total, total-count, count)},
 					WMain)
 			}
 		}, WMain)
@@ -505,10 +505,10 @@ func removeNotificationButtonFunc() {
 		ShowSelectItemDialog()
 		return
 	}
-	dialog.ShowCustomConfirm("Confirm",
-		"Confirm",
-		"Cancel",
-		&widget.Label{Text: "Are you sure you want to remove this notification?\n",
+	dialog.ShowCustomConfirm("确认",
+		"确认",
+		"取消",
+		&widget.Label{Text: "您确定要移除此通知吗?\n",
 			Alignment: fyne.TextAlignCenter},
 		func(b bool) {
 			if b {
@@ -545,14 +545,14 @@ func batchRemoveNotificationButtonFunc() {
 		"delete":  false,
 	}
 	enableCheck := &widget.Check{
-		Text:    "Enable",
+		Text:    "enable",
 		Checked: true,
 		OnChanged: func(b bool) {
 			config["enable"] = b
 		},
 	}
 	disableCheck := &widget.Check{
-		Text:    "Disable",
+		Text:    "disable",
 		Checked: true,
 		OnChanged: func(b bool) {
 			config["disable"] = b
@@ -566,15 +566,15 @@ func batchRemoveNotificationButtonFunc() {
 		},
 	}
 	deleteCheck := &widget.Check{
-		Text:    "Delete",
+		Text:    "delete",
 		Checked: false,
 		OnChanged: func(b bool) {
 			config["delete"] = b
 		},
 	}
-	dialog.ShowCustomConfirm("Batch Remove Notifications", "Confirm", "Cancel",
+	dialog.ShowCustomConfirm("批量移除通知", "确认", "取消",
 		container.NewVBox(
-			&widget.Label{Text: "Select the notification type to remove"},
+			&widget.Label{Text: "选择要移除的通知类型"},
 			enableCheck,
 			disableCheck,
 			installCheck,
@@ -610,9 +610,9 @@ func batchRemoveNotificationButtonFunc() {
 				if err := RefreshNotification(); err != nil {
 					ShowLpacErrDialog(err)
 				}
-				dialog.ShowCustom("Operation Finished",
-					"OK",
-					&widget.Label{Text: fmt.Sprintf("%d processed\n%d succeed\n%d failed", total, total-failedCount, failedCount)},
+				dialog.ShowCustom("操作完成",
+					"确定",
+					&widget.Label{Text: fmt.Sprintf("%d 个已处理\n%d 个成功\n%d 个失败", total, total-failedCount, failedCount)},
 					WMain)
 			}
 		}, WMain)
@@ -620,16 +620,16 @@ func batchRemoveNotificationButtonFunc() {
 
 func copyEidButtonFunc() {
 	WMain.Clipboard().SetContent(ChipInfo.EidValue)
-	CopyEidButton.SetText("Copied!")
+	CopyEidButton.SetText("已复制!")
 	time.Sleep(2 * time.Second)
-	CopyEidButton.SetText("Copy")
+	CopyEidButton.SetText("复制")
 }
 
 func copyEuiccInfo2ButtonFunc() {
 	WMain.Clipboard().SetContent(EuiccInfo2Entry.Text)
-	CopyEuiccInfo2Button.SetText("Copied eUICCInfo2!")
+	CopyEuiccInfo2Button.SetText("已复制eUICCInfo2!")
 	time.Sleep(2 * time.Second)
-	CopyEuiccInfo2Button.SetText("Copy eUICCInfo2")
+	CopyEuiccInfo2Button.SetText("复制eUICCInfo2")
 }
 
 func setDefaultSmdpButtonFunc() {
@@ -691,11 +691,11 @@ func viewCertInfoButtonFunc() {
 		if selectedCI == Unselected {
 			ShowSelectItemDialog()
 		} else if issuer := GetIssuer(ciWidgetEls[selectedCI].KeyID); issuer == nil {
-			dialog.ShowInformation("No Data",
-				"The information of this certificate is not included.\n"+
-					"If you have any information about this certificate,\n"+
-					"you can report it to <euicc-dev-manual@septs.pw>\n"+
-					"Thank you",
+			dialog.ShowInformation("没有数据",
+				"此证书的信息未包含在内.\n"+
+					"如果您对此证书有任何信息,\n"+
+					"请报告至 <euicc-dev-manual@septs.pw>\n"+
+					"谢谢",
 				WMain)
 		} else {
 			const CiUrl = "https://euicc-manual.septs.app/docs/pki/ci/files/"
@@ -706,11 +706,11 @@ func viewCertInfoButtonFunc() {
 		}
 	}
 	certDataButton := &widget.Button{
-		Text:     "Certificate Info",
+		Text:     "证书信息",
 		OnTapped: certDataButtonFunc,
 		Icon:     theme.InfoIcon(),
 	}
-	d := dialog.NewCustom("Certificate Issuer", "OK",
+	d := dialog.NewCustom("证书颁发机构", "确定",
 		container.NewBorder(nil, container.NewCenter(certDataButton), nil, nil, list), WMain)
 	d.Resize(fyne.Size{
 		Width:  600,
@@ -756,10 +756,12 @@ func initProfileList() *widget.List {
 			} else {
 				nameLabel.SetText(Profiles[i].ProfileName)
 			}
-			stateLabel.SetText(Profiles[i].CapitalizedState())
+
 			if Profiles[i].ProfileState == "enabled" {
+				stateLabel.SetText("已启用")
 				enabledIcon.Show()
 			} else {
+				stateLabel.SetText("已禁用")
 				enabledIcon.Hide()
 			}
 
@@ -770,17 +772,17 @@ func initProfileList() *widget.List {
 				profileIcon.Hide()
 			}
 
-			providerLabel.SetText("Provider: " + Profiles[i].ServiceProviderName)
+			providerLabel.SetText("运营商: " + Profiles[i].ServiceProviderName)
 		},
 		OnSelected: func(id widget.ListItemID) {
 			SelectedProfile = id
 			if Profiles[SelectedProfile].ProfileState == "enabled" {
 				ProfileStateAllowDisable = true
-				SwitchStateButton.SetText("Disable")
+				SwitchStateButton.SetText("禁用")
 				SwitchStateButton.SetIcon(theme.CancelIcon())
 			} else {
 				ProfileStateAllowDisable = false
-				SwitchStateButton.SetText("Enable")
+				SwitchStateButton.SetText("启用")
 				SwitchStateButton.SetIcon(theme.ConfirmIcon())
 			}
 		},
@@ -839,20 +841,20 @@ func initNotificationList() *widget.List {
 			}
 			// ICCID
 			if iccid == "" {
-				iccid = "No ICCID!"
+				iccid = "无 ICCID!"
 			}
 			iccidLabel.SetText(fmt.Sprint("(", iccid, ")"))
 			// Notification Address
 			notificationAddressLabel.SetText(notificationAddress)
 			// Seq number
-			seqLabel.SetText(fmt.Sprint("Seq: ", Notifications[i].SeqNumber))
+			seqLabel.SetText(fmt.Sprint("序号: ", Notifications[i].SeqNumber))
 			// Operation
 			operationLabel.
 				SetText(Notifications[i].CapitalizedOperation())
 			// Provider
 			profile, err := findProfileByIccid(Notifications[i].Iccid)
 			if err != nil {
-				providerLabel.SetText("?deleted profile")
+				providerLabel.SetText("?已删除的配置文件")
 				providerIcon.Hide()
 			} else {
 				name := profile.ServiceProviderName
@@ -893,19 +895,19 @@ func processNotificationManually(seq int) {
 		}
 		if notification == nil {
 			// 不应该出现
-			dialog.ShowError(errors.New("failed to found notification"), WMain)
+			dialog.ShowError(errors.New("未找到通知"), WMain)
 			return
 		}
 		var d *dialog.CustomDialog
 		notNowButton := &widget.Button{
-			Text: "Not Now",
+			Text: "现在不操作",
 			Icon: theme.CancelIcon(),
 			OnTapped: func() {
 				d.Hide()
 			},
 		}
 		removeButton := &widget.Button{
-			Text: "Remove",
+			Text: "移除",
 			Icon: theme.DeleteIcon(),
 			OnTapped: func() {
 				go func() {
@@ -924,16 +926,16 @@ func processNotificationManually(seq int) {
 				}()
 			},
 		}
-		d = dialog.NewCustomWithoutButtons("Remove Notification",
+		d = dialog.NewCustomWithoutButtons("移除通知",
 			container.NewBorder(
 				nil,
 				container.NewCenter(container.NewHBox(notNowButton, spacer, removeButton)),
 				nil,
 				nil,
 				container.NewVBox(
-					&widget.Label{Text: "Successfully processed notification.\nDo you want to remove this notification now?",
+					&widget.Label{Text: "成功处理通知.\n你想立即移除此通知吗?",
 						Alignment: fyne.TextAlignCenter},
-					&widget.Label{Text: fmt.Sprintf("Seq: %d\nICCID: %s\nOperation: %s\nAddress: %s\n",
+					&widget.Label{Text: fmt.Sprintf("序号: %d\nICCID: %s\n操作: %s\n服务器: %s\n",
 						notification.SeqNumber, notification.Iccid,
 						notification.ProfileManagementOperation, notification.NotificationAddress)})),
 			WMain)
@@ -974,5 +976,5 @@ func findProfileByIccid(iccid string) (*Profile, error) {
 			return profile, nil
 		}
 	}
-	return nil, errors.New("profile not found")
+	return nil, errors.New("未找到配置文件")
 }

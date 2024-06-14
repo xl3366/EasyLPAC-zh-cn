@@ -52,9 +52,9 @@ func main() {
 		d.Show()
 	} else {
 		if version, err2 := LpacVersion(); err2 != nil {
-			LpacVersionLabel.SetText("lpac Version: unknown")
+			LpacVersionLabel.SetText("lpac 版本: unknown")
 		} else {
-			LpacVersionLabel.SetText("lpac Version: " + version)
+			LpacVersionLabel.SetText("lpac 版本: " + version)
 		}
 		RefreshApduDriver()
 		if ApduDrivers != nil {

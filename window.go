@@ -20,7 +20,7 @@ var WMain fyne.Window
 var spacer *canvas.Rectangle
 
 func InitMainWindow() fyne.Window {
-	w := App.NewWindow("EasyLPAC")
+	w := App.NewWindow(fmt.Sprintf("EasyLPAC 速易卡(版本: %s)", Version))
 	w.Resize(fyne.Size{
 		Width:  850,
 		Height: 545,
@@ -43,7 +43,7 @@ func InitMainWindow() fyne.Window {
 		container.NewBorder(
 			nil,
 			nil,
-			widget.NewLabel("Card Reader:"),
+			widget.NewLabel("读卡器:"),
 			nil,
 			container.NewHBox(container.NewGridWrap(fyne.Size{
 				Width:  280,
@@ -66,7 +66,7 @@ func InitMainWindow() fyne.Window {
 		nil,
 		nil,
 		ProfileList)
-	ProfileTab = container.NewTabItem("Profile", profileTabContent)
+	ProfileTab = container.NewTabItem("配置文件", profileTabContent)
 
 	notificationTabContent := container.NewBorder(
 		topToolBar,
@@ -83,7 +83,7 @@ func InitMainWindow() fyne.Window {
 		nil,
 		nil,
 		NotificationList)
-	NotificationTab = container.NewTabItem("Notification", notificationTabContent)
+	NotificationTab = container.NewTabItem("通知", notificationTabContent)
 
 	chipInfoTabContent := container.NewBorder(
 		topToolBar,
@@ -108,36 +108,36 @@ func InitMainWindow() fyne.Window {
 			nil,
 			container.NewScroll(EuiccInfo2Entry),
 		))
-	ChipInfoTab = container.NewTabItem("Chip Info", chipInfoTabContent)
+	ChipInfoTab = container.NewTabItem("芯片信息", chipInfoTabContent)
 
 	settingsTabContent := container.NewVBox(
-		&widget.Label{Text: "lpac debug output", TextStyle: fyne.TextStyle{Bold: true}},
+		&widget.Label{Text: "LPAC 调试输出", TextStyle: fyne.TextStyle{Bold: true}},
 		&widget.Check{
-			Text:    "Enable env LIBEUICC_DEBUG_HTTP",
+			Text:    "启用环境变量 LIBEUICC_DEBUG_HTTP",
 			Checked: false,
 			OnChanged: func(b bool) {
 				ConfigInstance.DebugHTTP = b
 			},
 		},
 		&widget.Check{
-			Text:    "Enable env LIBEUICC_DEBUG_APDU",
+			Text:    "启用环境变量 LIBEUICC_DEBUG_APDU",
 			Checked: false,
 			OnChanged: func(b bool) {
 				ConfigInstance.DebugAPDU = b
 			},
 		},
-		&widget.Label{Text: "EasyLPAC settings", TextStyle: fyne.TextStyle{Bold: true}},
+		&widget.Label{Text: "EasyLPAC 设置", TextStyle: fyne.TextStyle{Bold: true}},
 		&widget.Check{
-			Text:    "Auto process notification",
+			Text:    "自动处理通知",
 			Checked: true,
 			OnChanged: func(b bool) {
 				ConfigInstance.AutoMode = b
 			},
 		})
-	SettingsTab = container.NewTabItem("Settings", settingsTabContent)
+	SettingsTab = container.NewTabItem("设置", settingsTabContent)
 
 	thankstoText := widget.NewRichTextFromMarkdown(`
-# Thanks to
+# 鸣谢
 
 [lpac](https://github.com/estkme-group/lpac) C-based eUICC LPA
 
@@ -152,17 +152,24 @@ lpac GUI Frontend
 
 [Github](https://github.com/creamlike1024/EasyLPAC) Repo `)
 
+	suyikaText := widget.NewRichTextFromMarkdown(`
+# 速易卡
+
+[MFF2转(QFN8)4FF卡板](https://item.taobao.com/item.htm?id=730209105541) 淘宝
+
+[ST33G(WLCSP11)转4FF卡板](https://item.taobao.com/item.htm?id=723325804913) 淘宝 `)
+
 	aboutTabContent := container.NewBorder(
 		nil,
 		container.NewBorder(nil, nil,
 			container.NewHBox(
-				widget.NewLabel(fmt.Sprintf("Version: %s", Version)),
+				widget.NewLabel(fmt.Sprintf("版本: %s", Version)),
 				LpacVersionLabel),
-			widget.NewLabel(fmt.Sprintf("eUICC Data: %s", EUICCDataVersion))),
+			widget.NewLabel(fmt.Sprintf("eUICC 数据: %s", EUICCDataVersion))),
 		nil,
 		nil,
-		container.NewCenter(container.NewVBox(thankstoText, aboutText)))
-	AboutTab = container.NewTabItem("About", aboutTabContent)
+		container.NewCenter(container.NewVBox(thankstoText, aboutText,suyikaText)))
+	AboutTab = container.NewTabItem("关于", aboutTabContent)
 
 	Tabs = container.NewAppTabs(ProfileTab, NotificationTab, ChipInfoTab, SettingsTab, AboutTab)
 
@@ -172,34 +179,34 @@ lpac GUI Frontend
 }
 
 func InitDownloadDialog() dialog.Dialog {
-	smdpEntry := &widget.Entry{PlaceHolder: "Leave it empty to use default SM-DP+"}
-	matchIDEntry := &widget.Entry{PlaceHolder: "Activation code. Optional"}
-	confirmCodeEntry := &widget.Entry{PlaceHolder: "Optional"}
-	imeiEntry := &widget.Entry{PlaceHolder: "The IMEI sent to SM-DP+. Optional"}
+	smdpEntry := &widget.Entry{PlaceHolder: "留空使用默认SM-DP+"}
+	matchIDEntry := &widget.Entry{PlaceHolder: "激活码(选填)"}
+	confirmCodeEntry := &widget.Entry{PlaceHolder: "确认码(选填)"}
+	imeiEntry := &widget.Entry{PlaceHolder: "终端IMEI(选填)"}
 
 	formItems := []*widget.FormItem{
 		{Text: "SM-DP+", Widget: smdpEntry},
-		{Text: "Matching ID", Widget: matchIDEntry},
-		{Text: "Confirm Code", Widget: confirmCodeEntry},
+		{Text: "激活码", Widget: matchIDEntry},
+		{Text: "确认码", Widget: confirmCodeEntry},
 		{Text: "IMEI", Widget: imeiEntry},
 	}
 
 	form := widget.NewForm(formItems...)
 	var d dialog.Dialog
 	showConfirmCodeNeededDialog := func() {
-		dialog.ShowInformation("Confirm Code Required",
-			"This profile needs confirm code to download.\n"+
-				"Please fill the confirm code manually.", WMain)
+		dialog.ShowInformation("需要确认码",
+			"此配置文件需要确认码才能下载.\n"+
+				"请手动填写确认码.", WMain)
 	}
 	cancelButton := &widget.Button{
-		Text: "Cancel",
+		Text: "取消",
 		Icon: theme.CancelIcon(),
 		OnTapped: func() {
 			d.Hide()
 		},
 	}
 	downloadButton := &widget.Button{
-		Text:       "Download",
+		Text:       "下载",
 		Icon:       theme.ConfirmIcon(),
 		Importance: widget.HighImportance,
 		OnTapped: func() {
@@ -237,13 +244,13 @@ func InitDownloadDialog() dialog.Dialog {
 	}
 
 	selectQRCodeButton = &widget.Button{
-		Text: "Scan image file",
+		Text: "扫描图像文件",
 		Icon: theme.FileImageIcon(),
 		OnTapped: func() {
 			go func() {
 				disableButtons()
 				defer enableButtons()
-				fileBuilder := nativeDialog.File().Title("Select a QR Code image file")
+				fileBuilder := nativeDialog.File().Title("选择一个二维码图片文件")
 				fileBuilder.Filters = []nativeDialog.FileFilter{
 					{
 						Desc:       "Image (*.png, *.jpg, *.jpeg)",
@@ -281,7 +288,7 @@ func InitDownloadDialog() dialog.Dialog {
 		},
 	}
 	pasteFromClipboardButton = &widget.Button{
-		Text: "Paste QR Code or LPA:1 Activation Code from clipboard",
+		Text: "从剪贴板粘贴二维码或LPA:1激活码",
 		Icon: theme.ContentPasteIcon(),
 		OnTapped: func() {
 			go func() {
@@ -323,7 +330,7 @@ func InitDownloadDialog() dialog.Dialog {
 			}()
 		},
 	}
-	d = dialog.NewCustomWithoutButtons("Download", container.NewBorder(
+	d = dialog.NewCustomWithoutButtons("下载", container.NewBorder(
 		nil,
 		container.NewVBox(spacer, container.NewCenter(selectQRCodeButton), spacer,
 			container.NewCenter(pasteFromClipboardButton), spacer,
@@ -339,11 +346,11 @@ func InitDownloadDialog() dialog.Dialog {
 }
 
 func InitSetNicknameDialog() dialog.Dialog {
-	entry := &widget.Entry{PlaceHolder: "Leave it empty to remove nickname"}
+	entry := &widget.Entry{PlaceHolder: "留空删除别称"}
 	form := []*widget.FormItem{
-		{Text: "Nickname", Widget: entry},
+		{Text: "别称", Widget: entry},
 	}
-	d := dialog.NewForm("Set Nickname", "Submit", "Cancel", form, func(b bool) {
+	d := dialog.NewForm("设置别称", "提交", "取消", form, func(b bool) {
 		if b {
 			if err := LpacProfileNickname(Profiles[SelectedProfile].Iccid, entry.Text); err != nil {
 				ShowLpacErrDialog(err)
@@ -362,11 +369,11 @@ func InitSetNicknameDialog() dialog.Dialog {
 }
 
 func InitSetDefaultSmdpDialog() dialog.Dialog {
-	entry := &widget.Entry{PlaceHolder: "Leave it empty to remove default SM-DP+ setting"}
+	entry := &widget.Entry{PlaceHolder: "留空删除默认的SM-DP+"}
 	form := []*widget.FormItem{
-		{Text: "Default SM-DP+", Widget: entry},
+		{Text: "默认SM-DP+", Widget: entry},
 	}
-	d := dialog.NewForm("Set Default SM-DP+", "Submit", "Cancel", form, func(b bool) {
+	d := dialog.NewForm("设置默认SM-DP+", "提交", "取消", form, func(b bool) {
 		if b {
 			if err := LpacChipDefaultSmdp(entry.Text); err != nil {
 				ShowLpacErrDialog(err)
@@ -390,16 +397,16 @@ func ShowLpacErrDialog(err error) {
 		content := container.NewVBox(
 			container.NewCenter(container.NewHBox(
 				widget.NewIcon(theme.ErrorIcon()),
-				widget.NewLabel("lpac error"))),
+				widget.NewLabel("lpac 错误"))),
 			container.NewCenter(l),
-			container.NewCenter(widget.NewLabel("Please check the log for details")))
-		dialog.ShowCustom("Error", "OK", content, WMain)
+			container.NewCenter(widget.NewLabel("请查看日志获取详细信息")))
+		dialog.ShowCustom("错误", "确定", content, WMain)
 	}()
 }
 
 func ShowSelectItemDialog() {
 	go func() {
-		d := dialog.NewInformation("Info", "Please select a item.", WMain)
+		d := dialog.NewInformation("信息", "请选择一个项目.", WMain)
 		d.Resize(fyne.Size{
 			Width:  220,
 			Height: 160,
@@ -410,12 +417,12 @@ func ShowSelectItemDialog() {
 
 func ShowSelectCardReaderDialog() {
 	go func() {
-		dialog.ShowInformation("Info", "Please select a card reader.", WMain)
+		dialog.ShowInformation("信息", "请选择一个读卡器.", WMain)
 	}()
 }
 
 func ShowRefreshNeededDialog() {
 	go func() {
-		dialog.ShowInformation("Info", "Please refresh before proceeding.\n", WMain)
+		dialog.ShowInformation("信息", "请在继续之前进行刷新.\n", WMain)
 	}()
 }

@@ -1,0 +1,540 @@
+[33mcommit 25926beb94db433da00e3767dcf7bcb4014c5d7b[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Wed Jun 5 15:39:39 2024 +0800
+
+    chore: update eUICC Manual Link
+
+[33mcommit 2f5d86f07d7cd41402f014bfb3bf18e2371146ab[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Mon May 20 10:46:00 2024 +0800
+
+    chore: update dependency
+
+[33mcommit 3cbaf4be5fbda90a356c467cdd09acf23ceb534f[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Mon May 20 10:40:16 2024 +0800
+
+    docs: update README.md
+
+[33mcommit cd95746a016e37931433d939d4f75693aa74eba8[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Mon May 20 10:27:46 2024 +0800
+
+    feat: get lpac version on startup
+
+[33mcommit bfc4be3bc9a48f9028f4d675bdf1711d0f79fc19[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Mon May 20 10:20:09 2024 +0800
+
+    ci: bump to version 0.7.6 build2
+
+[33mcommit d9234e338aecf24fb11d3059558e93f3c8320e24[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Fri May 17 00:38:16 2024 +0800
+
+    docs: update README.md
+
+[33mcommit 7c6249a94586fdc731c1de62ae349efc50029488[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Fri May 17 00:11:35 2024 +0800
+
+    ci: bump to version 0.7.6
+
+[33mcommit 7ca5eef8261c3414614cf45498070a784d0ba3f5[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Thu May 16 15:26:49 2024 +0800
+
+    refactor: use variable argument list
+
+[33mcommit c61205b9e465178c2a5b9d4d3232adcbf8c13999[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Thu May 16 15:21:46 2024 +0800
+
+    refactor: dialog show
+
+[33mcommit 74f51fc8722f37cbedde9259d199e2cf915b5117[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Thu May 16 14:59:13 2024 +0800
+
+    feat: auto process notification
+
+[33mcommit 0f57336ae74aea6d431b8c1f3963441252df643f[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Fri May 10 08:46:01 2024 +0800
+
+    ci: add macos x86 build
+
+[33mcommit 41532b2177be1ffa7a091a5f7cddb2a377d656a7[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Thu May 9 13:42:10 2024 +0800
+
+    ci: update action version
+
+[33mcommit af82d1bc9687d7d0106fba0d45856fd0c8599a55[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Thu May 9 13:35:03 2024 +0800
+
+    feat: sort notification by seq
+
+[33mcommit 26aba9d4a5b3f887723ca92a70d047896a755f49[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Thu May 2 17:45:45 2024 +0800
+
+    fix: use executable file path instead of pwd
+
+[33mcommit 3c4f1c510e336ef7475e118de7a5657222356ad4[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Thu May 2 17:33:25 2024 +0800
+
+    ci: bump to 0.7.5 build 2
+
+[33mcommit e86a7f88d0217dcc02f0c7cd64b646494804bc8b[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Thu May 2 17:30:36 2024 +0800
+
+    feat: remove unused setting title
+
+[33mcommit b61b1e8a3c63087a14734a67573eb7c8d47ff015[m
+Author: 1ridic <88495501+1ridic@users.noreply.github.com>
+Date:   Wed May 1 23:43:07 2024 +0800
+
+    fix: change lpac searching behavior for linux (#14)
+    
+    It's more reasonable to search for lpac in the directory where the
+    executable file is located. Change it to the same as darwin.
+
+[33mcommit 53cebe7ce50e78c70dec1faefaed4f0c9b24ce15[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Tue Apr 30 14:16:51 2024 +0800
+
+    feat: update primary color
+
+[33mcommit 26b37daef0739babc79813e215337a22a00e8efa[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Tue Apr 30 13:46:17 2024 +0800
+
+    ci: add LICENSE to release
+
+[33mcommit 3f27aaa7412ffba87731dc6954094ddf17fc4055[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Tue Apr 30 13:34:07 2024 +0800
+
+    feat: move IMEI entry to download window
+
+[33mcommit 207c848e58b6d8911d0c7bbddcced91d8f426c7e[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Tue Apr 30 12:23:38 2024 +0800
+
+    ci: bump to version 0.7.5
+
+[33mcommit 6cf798e915a3229fcfc09862ddeb4b05e5832b16[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Tue Apr 30 12:23:01 2024 +0800
+
+    docs: update README.md
+
+[33mcommit d32d146dd72b95440e425a7fcb7d400f9c4ec05e[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Tue Apr 30 11:47:06 2024 +0800
+
+    ci: bump to lpac version 2.0.1
+
+[33mcommit 38fcf99425cafb5dd836d991c8ade7eacdab3a0f[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Fri Apr 12 16:47:41 2024 +0800
+
+    ci: Re add Linux build
+
+[33mcommit eb75efe20109fb52837bc1cd8a385db629a5ac76[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Fri Apr 12 16:47:20 2024 +0800
+
+    update README.md
+
+[33mcommit acb960543d8255990197a5a92719eedfbe75691e[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Thu Apr 11 10:36:24 2024 +0800
+
+    ci: bump to version 0.7.4
+
+[33mcommit 72166d6c1e5165f326e73acb98538d132736a08a[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Thu Apr 11 10:35:57 2024 +0800
+
+    feat: process all notification dialog
+
+[33mcommit d0dcb92674883d6b8feb4d46989c55c94ba5b321[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Thu Apr 11 10:27:55 2024 +0800
+
+    update dependency
+
+[33mcommit 04cf316fb45f4f2c799f5e087dcbc76f0c29a3ad[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Wed Apr 10 20:32:56 2024 +0800
+
+    feat: batch remove notifications by operation
+
+[33mcommit 95d0def53fc25c4dd3d0b1e869d6c6c33cc1d5dd[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Wed Apr 10 20:53:10 2024 +0800
+
+    update README.md
+
+[33mcommit 83569ea9226c0373c3ea1984c50e60b62f3cd020[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Fri Mar 29 19:16:19 2024 +0800
+
+    ci: bump to version 0.7.3
+
+[33mcommit 418b2cd7bc68d8b67e3bdc7612cfe8095a3030ad[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Fri Mar 29 19:07:38 2024 +0800
+
+    feat: add process all notification
+
+[33mcommit 4ae3fc6e62b4fb3206881bf7f6874b98a1aaf1ed[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Thu Mar 28 09:19:17 2024 +0800
+
+    feat: display nickname instead of profile name
+
+[33mcommit 3b9e5e002cacf5add31256a97f3abe664542679f[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Thu Mar 28 00:15:36 2024 +0800
+
+    fix: works in lpac debug output
+
+[33mcommit c82e89a5e2c8b50930c9311b6aa71447e86f1416[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Wed Mar 27 23:06:13 2024 +0800
+
+    feat: segregate macOS arm64 build
+
+[33mcommit 5f30a03e3066b735d363dafa7ab1f46a6cad20f1[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Wed Mar 27 22:26:51 2024 +0800
+
+    feat: update for lpac v2.0.0
+
+[33mcommit 52e03909d2c9f6494807c9d6f89540623be2766b[m
+Author: creamlike1024 <creamlike1024@outlook.com>
+Date:   Tue Mar 19 17:26:10 2024 +0800
+
+    ci: fix Modify version number command for macOS
+
+[33mcommit bd83666c23fb9ce1c575d5da2172cf3d45132e6a[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Fri Mar 15 12:46:29 2024 +0800
+
+    ci: bump to version 0.7.2
+
+[33mcommit 440a91bbfd6b76cc86c4e95aea630b5c6c3eb138[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Fri Mar 15 12:45:58 2024 +0800
+
+    feat: recommit updates
+    - move fake imei to settings tab
+    - upgrade lpac
+    - enable debug output by default
+    - update dependency
+    - refresh error handing
+
+[33mcommit 6e4a131577b4fc4a6b660ea094210b319fbe314e[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Tue Mar 12 12:15:14 2024 +0800
+
+    refactor: eum product and open url error dialog
+
+[33mcommit ece34d38995be0bcd0ae4628dbb3ea0857cc9530[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Sat Mar 9 23:48:10 2024 +0800
+
+    refactor: extract the title case naming convention as function
+
+[33mcommit 4f3fbcb32dcfc40233954fda2f40837fb63248f8[m
+Merge: 1968cb2 21bd8ce
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Sat Mar 9 23:39:56 2024 +0800
+
+    Merge pull request #10 from septs/product-name-identify
+    
+    product name identification, based eid prefix
+
+[33mcommit 21bd8cede510b45d83efc377d96ae285588a1dcf[m
+Author: septs <github@septs.pw>
+Date:   Sat Mar 9 19:53:39 2024 +0800
+
+    product name identification, based eid prefix
+
+[33mcommit 1968cb267ea4557f18e53e89bce98b20b8cc5b4a[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Fri Mar 8 11:51:08 2024 +0800
+
+    ci: bump to version 0.7.1
+
+[33mcommit 98e93b2d8003c4c2f5525fa4875d6d012125b676[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Fri Mar 8 11:31:40 2024 +0800
+
+    ci: rollback lpac to asn1c version
+
+[33mcommit 58f6ec5eb63381e92425d68d55b681f4b91c283f[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Fri Mar 8 10:58:50 2024 +0800
+
+    update screenshots
+
+[33mcommit f1bcf07519d4e30306133d94813cc0f9d4cded2f[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Fri Mar 8 10:56:37 2024 +0800
+
+    feat: state and operation use capital letters
+
+[33mcommit 1b8839e5f505774a4d101c2d2175612f68d34108[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Thu Mar 7 22:43:28 2024 +0800
+
+    feat: add debug log output
+
+[33mcommit 527167e6f26f8da3ce2a3d00e5e109f01cc4d358[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Thu Mar 7 15:33:56 2024 +0800
+
+    refactor: use Spacer replace Border layout
+
+[33mcommit 21e253abf8c22701f6d5e4fb8f6b54e67a59039f[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Thu Mar 7 14:29:11 2024 +0800
+
+    fix: state and operation label alignment
+
+[33mcommit dcab650c1651bc2bc58a49e4358c81b6d435b2b5[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Thu Mar 7 14:16:39 2024 +0800
+
+    fix: lpa string completion
+    do not complete when no prefix found
+
+[33mcommit 6874fb79dfad447f7d92789216f11a2ef0f5066d[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Thu Mar 7 14:14:02 2024 +0800
+
+    fix: show cjk character in error dialog
+
+[33mcommit e28c067a14b404cb4ad22e2a416f65cfe64d5328[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Thu Mar 7 13:30:02 2024 +0800
+
+    update screenshots
+
+[33mcommit b270957d35a46ea7d1b6b701780486823125ccab[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Thu Mar 7 13:23:38 2024 +0800
+
+    fix: reset switch state button after refresh
+
+[33mcommit 906e60120cc437c334fac19d7937557805fbaee4[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Thu Mar 7 12:42:15 2024 +0800
+
+    fix: crash on Masking Notification iccid
+
+[33mcommit 44ff585088bd6e23824ccecb06db60cb8a7c66ce[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Thu Mar 7 12:38:03 2024 +0800
+
+    refactor: fallback font and Profile list
+
+[33mcommit 16138f54ef38195772d8f5e6023f64b55a19d4c8[m
+Merge: 5038861 4d46b15
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Thu Mar 7 10:12:09 2024 +0800
+
+    Merge pull request #9 from septs/simplify-string-handling
+    
+    simplify string handling
+
+[33mcommit 4d46b154d2515f5d686f9d7cb05c003101ece617[m
+Merge: 925a0a9 5038861
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Thu Mar 7 10:12:02 2024 +0800
+
+    Merge branch 'master' into simplify-string-handling
+
+[33mcommit 5038861eee7a56681f34289cb464d609a2ac1d03[m
+Merge: f567f7b 2783b3e
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Thu Mar 7 10:06:41 2024 +0800
+
+    Merge pull request #8 from septs/simplify-icon-logic
+    
+    simplify icon handling logic
+
+[33mcommit 925a0a95c8b44595bdafd3a84a2ae54d5a90ed8c[m
+Author: septs <github@septs.pw>
+Date:   Thu Mar 7 03:17:55 2024 +0800
+
+    simplify string handling
+
+[33mcommit 2783b3e8a106e4111a6da8e186758e48033d2de5[m
+Author: septs <github@septs.pw>
+Date:   Thu Mar 7 02:56:03 2024 +0800
+
+    simplify icon handling logic
+
+[33mcommit f567f7ba42d7bbca149182796f1e8f047faf30f2[m
+Merge: 7c58a7f 6197f83
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Wed Mar 6 14:24:09 2024 +0800
+
+    Merge pull request #6 from septs/fix-gitignore
+    
+    update .gitignore
+
+[33mcommit 6197f83b968dc7fa12dcd9ddcbd1e4a027d2237c[m
+Author: septs <github@septs.pw>
+Date:   Wed Mar 6 13:03:50 2024 +0800
+
+    update .gitignore
+
+[33mcommit 7c58a7f2251abd749b0fc532c44d3f40bbddc1f7[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Mon Mar 4 13:05:26 2024 +0800
+
+    ci: bump to version 0.7.0
+
+[33mcommit e5764e73b7ec95bf03e46e7a8f9f5cb80e57f079[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Mon Mar 4 13:02:09 2024 +0800
+
+    feat: add icon to notification list
+
+[33mcommit 8c22456bb81eb8e7bb25d669fea56b1570a12c52[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Mon Mar 4 12:41:29 2024 +0800
+
+    ci: update lpac and add WoA target
+
+[33mcommit bdee1ff93b3f619226d0683593e57b8b5958a95e[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Mon Mar 4 12:23:09 2024 +0800
+
+    feat: exclude Canokey and Yubikey for APDU driver
+
+[33mcommit 2f94fc03eb48bf7a11637fbbff1f68c37e61cb7f[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Sun Mar 3 23:04:48 2024 +0800
+
+    ci: insert dynamic version information
+
+[33mcommit 8896e38b7bbd42e4b824d8b6bc2691852c3da54e[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Sun Mar 3 22:44:47 2024 +0800
+
+    refactor: clean up
+
+[33mcommit a90bab0f59bf221f91727cba33b2e77b588e0fd8[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Sat Mar 2 17:21:21 2024 +0800
+
+    merge refactor-registry
+
+[33mcommit 1a8f4a0acd2636d569780f39e4882af4d10c1d3d[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Sat Mar 2 16:33:17 2024 +0800
+
+    feat: bump to version 0.6.9
+
+[33mcommit 899f3c8b4e743d326f864be35fbf383c1876b8ed[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Sat Mar 2 16:32:29 2024 +0800
+
+    feat: LPA activation code complete test
+
+[33mcommit 38c623c3b21b772d7e59b8f9ae2ec048f1f291f0[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Sat Mar 2 16:21:37 2024 +0800
+
+    ci: update eUICC data
+
+[33mcommit 51371f76feaa5266bd7d04970f11ec7d10e9db7d[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Sat Mar 2 16:15:39 2024 +0800
+
+    refactor: remove discovery
+
+[33mcommit 5ba0c7b3c8bf878237091358f78de74764f1df1f[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Sat Mar 2 16:12:10 2024 +0800
+
+    refactor: code formatting
+
+[33mcommit b5284fc7302698a3bc3c434e4b59d820127d4e2b[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Sat Mar 2 16:02:58 2024 +0800
+
+    refactor: notification list
+
+[33mcommit 3c92190791609b785b6bfee60409efdeff4dff1e[m
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Sat Mar 2 14:46:02 2024 +0800
+
+    feat: remove all notification
+
+[33mcommit efbdbe4b1f2ee8531b833638b0e51a41ff68c7a0[m
+Merge: 654f388 2bfbfdc
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Thu Feb 29 00:02:21 2024 +0800
+
+    Merge pull request #4 from septs/refactor-show-cert-data
+    
+    refactor: show certificate details
+
+[33mcommit 2bfbfdc9d193a4a289ebd607b2f5d14250175941[m
+Author: septs <github@septs.pw>
+Date:   Wed Feb 28 23:55:59 2024 +0800
+
+    refactor: show certificate details
+
+[33mcommit 654f3886b3d303ae0980424c09fa4917ff2fbb4a[m
+Merge: f2a9297 0de41a2
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Wed Feb 28 23:28:58 2024 +0800
+
+    Merge pull request #3 from septs/refactor-ci-registry
+    
+    refactor: ci registry
+
+[33mcommit 0de41a2c73587410b9153a0376fd42623692c97f[m
+Author: septs <github@septs.pw>
+Date:   Wed Feb 28 22:58:00 2024 +0800
+
+    refactor: ci registry
+
+[33mcommit f2a9297f8054d929cf438c234325eedf86c24ee9[m
+Merge: b4badbb c632f8a
+Author: IcedTangerine <creamlike1024@outlook.com>
+Date:   Wed Feb 28 22:23:09 2024 +0800
+
+    Merge pull request #2 from septs/refactor-decode-lpa-string
+    
+    refactor: decode lpa parsing
+
+[33mcommit c632f8a8ce871fe809b6b99647cacfacace0bc4c[m
+Author: septs <github@septs.pw>
+Date:   Wed Feb 28 22:05:03 2024 +0800
+
+    chore: add trim space
+
+[33mcommit 785f1e17a973ab05d6676416fee08ab3c8fb1064[m
+Author: septs <github@septs.pw>
+Date:   Wed Feb 28 21:50:09 2024 +0800
+
+    chore: add unit tests
+
+[33mcommit b055bb4921459d3a544081227c7fbb04109edaa6[m
+Author: septs <github@septs.pw>
+Date:   Wed Feb 28 21:35:30 2024 +0800
+
+    chore: simplify variable definition

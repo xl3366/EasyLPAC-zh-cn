@@ -37,7 +37,7 @@ func RefreshProfile() error {
 	// 刷新 List
 	ProfileList.Refresh()
 	ProfileList.UnselectAll()
-	SwitchStateButton.SetText("Enable")
+	SwitchStateButton.SetText("启用")
 	SwitchStateButton.SetIcon(theme.ConfirmIcon())
 	return nil
 }
@@ -69,36 +69,36 @@ func RefreshChipInfo() error {
 
 	convertToString := func(value interface{}) string {
 		if value == nil {
-			return "<not set>"
+			return "<未设置>"
 		}
 		if str, ok := value.(string); ok {
 			return str
 		}
-		return "<not set>"
+		return "<未设置>"
 	}
 
 	EidLabel.SetText(fmt.Sprintf("EID: %s", ChipInfo.EidValue))
-	DefaultDpAddressLabel.SetText(fmt.Sprintf("Default SM-DP+ Address:  %s", convertToString(ChipInfo.EuiccConfiguredAddresses.DefaultDpAddress)))
-	RootDsAddressLabel.SetText(fmt.Sprintf("Root SM-DS Address:  %s", convertToString(ChipInfo.EuiccConfiguredAddresses.RootDsAddress)))
+	DefaultDpAddressLabel.SetText(fmt.Sprintf("默认SM-DP+地址:  %s", convertToString(ChipInfo.EuiccConfiguredAddresses.DefaultDpAddress)))
+	RootDsAddressLabel.SetText(fmt.Sprintf("根SM-DS地址:  %s", convertToString(ChipInfo.EuiccConfiguredAddresses.RootDsAddress)))
 	// eUICC Manufacturer Label
 	if eum := GetEUM(ChipInfo.EidValue); eum != nil {
 		manufacturer := fmt.Sprint(eum.Manufacturer, " ", CountryCodeToEmoji(eum.Country))
 		if productName := eum.ProductName(ChipInfo.EidValue); productName != "" {
 			manufacturer = fmt.Sprint(productName, " (", manufacturer, ")")
 		}
-		EUICCManufacturerLabel.SetText("Manufacturer: " + manufacturer)
+		EUICCManufacturerLabel.SetText("制造商: " + manufacturer)
 	} else {
-		EUICCManufacturerLabel.SetText("Manufacturer: Unknown")
+		EUICCManufacturerLabel.SetText("制造商: Unknown")
 	}
 	// EUICCInfo2 entry
 	bytes, err := json.MarshalIndent(ChipInfo.EUICCInfo2, "", "  ")
 	if err != nil {
-		ShowLpacErrDialog(fmt.Errorf("chip Info: failed to decode EUICCInfo2\n%s", err))
+		ShowLpacErrDialog(fmt.Errorf("芯片信息：解码EUICCInfo2失败\n%s", err))
 	}
 	EuiccInfo2Entry.SetText(string(bytes))
 	// 计算剩余空间
 	freeSpace := float64(ChipInfo.EUICCInfo2.ExtCardResource.FreeNonVolatileMemory) / 1024
-	FreeSpaceLabel.SetText(fmt.Sprintf("Free space: %.2f KB", math.Round(freeSpace*100)/100))
+	FreeSpaceLabel.SetText(fmt.Sprintf("剩余空间: %.2f KB", math.Round(freeSpace*100)/100))
 
 	CopyEidButton.Show()
 	SetDefaultSmdpButton.Show()
@@ -147,7 +147,7 @@ func OpenProgram(name string) error {
 		launcher = "xdg-open"
 	}
 	if launcher == "" {
-		return fmt.Errorf("unsupported platform, failed to open")
+		return fmt.Errorf("不支持的平台，无法打开")
 	}
 	return exec.Command(launcher, name).Start()
 }
@@ -180,12 +180,12 @@ func UpdateStatusBarListener() {
 		status := <-StatusChan
 		switch status {
 		case StatusProcess:
-			StatusLabel.SetText("Processing...")
+			StatusLabel.SetText("处理中...")
 			StatusProcessBar.Start()
 			StatusProcessBar.Show()
 			continue
 		case StatusReady:
-			StatusLabel.SetText("Ready.")
+			StatusLabel.SetText("就绪.")
 			StatusProcessBar.Stop()
 			StatusProcessBar.Hide()
 			continue
