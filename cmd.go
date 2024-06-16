@@ -197,20 +197,20 @@ func LpacProfileDownload(info PullInfo) {
 		Refresh()
 		downloadNotification := findNewNotification(notificationOrigin, Notifications)
 		if downloadNotification == nil {
-			dialog.ShowError(errors.New("notification not found"), WMain)
+			dialog.ShowError(errors.New("通知未找到"), WMain)
 			return
 		}
 		if ConfigInstance.AutoMode {
 			var dialogText string
 			if err2 := LpacNotificationProcess(downloadNotification.SeqNumber, true); err2 != nil {
-				dialogText = "Download successful\nSend install notification failed\n"
+				dialogText = "下载成功\n发送安装通知失败\n"
 			} else {
-				dialogText = "Download successful\nSend install notification successful\nRemove install notification successful\n"
+				dialogText = "下载成功\n发送安装通知成功\n移除安装通知成功\n"
 			}
-			dialog.ShowInformation("Info", dialogText, WMain)
+			dialog.ShowInformation("信息", dialogText, WMain)
 		} else {
-			dialog.ShowConfirm("Send Install Notification",
-				"Download successful\nSend the install notification now?\n",
+			dialog.ShowConfirm("发送安装通",
+				"下载成功\n立即发送安装通知吗?\n",
 				func(b bool) {
 					if b {
 						go processNotificationManually(downloadNotification.SeqNumber)
